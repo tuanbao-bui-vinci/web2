@@ -1,0 +1,11 @@
+### Read all films
+GET {{baseUrl}}/films
+
+
+### Read min 130 min
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/films/?minimum-duration=130
+
+### Try to read films with wrong minimum-duration
+GET {{baseUrl}}/films/?minimum-duration=0
+
