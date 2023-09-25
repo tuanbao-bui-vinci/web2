@@ -41,7 +41,36 @@ const FILM = [
   });
 
   router.get('/:id',(req,res)=>{
+    const indexOfFilm = FILM.findIndex((films)=>films.id == req.params.id);
+
+    if(indexOfFilm<0) return res.json('id not found'); 
     
+    return res.json(FILM[indexOfFilm]);
+  });
+
+  router.post('/',(req, res) =>{
+    const title = req?.body?.title?.trim()?.length !== 0 ? req.body.title : undefined;
+  const link = req?.body?.content?.trim().length !== 0 ? req.body.link : undefined;
+  const duration =
+    typeof req?.body?.duration !== 'number' || req.body.duration < 0
+      ? undefined
+      : req.body.duration;
+  const budget =
+    typeof req?.body?.budget !== 'number' || req.body.budget < 0
+      ? undefined
+      : req.body.budget;
+
+  if (!title || !link || !duration || !budget) return res.json('Bad request'); // bad practise (will be improved in exercise 1.5)
+
+  const lastItemIndex = FILM?.length !== 0 ? FILM.length - 1 : undefined;
+  const lastId = lastItemIndex !== undefined ? FILM[lastItemIndex]?.id : 0;
+  const nextId = lastId + 1;
+
+  const newFilm = { id: nextId, title, link, duration, budget };
+
+  FILM.push(newFilm);
+
+  return res.json(newFilm);
   });
 
 
