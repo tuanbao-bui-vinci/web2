@@ -60,7 +60,7 @@ const FILM = [
       ? undefined
       : req.body.budget;
 
-  if (!title || !link || !duration || !budget) return res.json('Bad request'); // bad practise (will be improved in exercise 1.5)
+  if (!title || !link || !duration || !budget) return res.json('Bad request');
 
   const lastItemIndex = FILM?.length !== 0 ? FILM.length - 1 : undefined;
   const lastId = lastItemIndex !== undefined ? FILM[lastItemIndex]?.id : 0;

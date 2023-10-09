@@ -50,27 +50,27 @@ const FILM = [
 
   router.post('/',(req, res) =>{
     const title = req?.body?.title?.trim()?.length !== 0 ? req.body.title : undefined;
-  const link = req?.body?.content?.trim().length !== 0 ? req.body.link : undefined;
-  const duration =
-    typeof req?.body?.duration !== 'number' || req.body.duration < 0
-      ? undefined
-      : req.body.duration;
-  const budget =
-    typeof req?.body?.budget !== 'number' || req.body.budget < 0
-      ? undefined
-      : req.body.budget;
+    const link = req?.body?.content?.trim().length !== 0 ? req.body.link : undefined;
+    const duration =
+      typeof req?.body?.duration !== 'number' || req.body.duration < 0
+        ? undefined
+        : req.body.duration;
+    const budget =
+      typeof req?.body?.budget !== 'number' || req.body.budget < 0
+        ? undefined
+        : req.body.budget;
 
-  if (!title || !link || !duration || !budget) return res.sendStatus(400);
+    if (!title || !link || !duration || !budget) return res.sendStatus(400);
 
-  const lastItemIndex = FILM?.length !== 0 ? FILM.length - 1 : undefined;
-  const lastId = lastItemIndex !== undefined ? FILM[lastItemIndex]?.id : 0;
-  const nextId = lastId + 1;
+    const lastItemIndex = FILM?.length !== 0 ? FILM.length - 1 : undefined;
+    const lastId = lastItemIndex !== undefined ? FILM[lastItemIndex]?.id : 0;
+    const nextId = lastId + 1;
 
-  const newFilm = { id: nextId, title, link, duration, budget };
+    const newFilm = { id: nextId, title, link, duration, budget };
 
-  FILM.push(newFilm);
+    FILM.push(newFilm);
 
-  return res.json(newFilm);
+    return res.json(newFilm);
   });
 
 
