@@ -1,11 +1,14 @@
-let myForm = document.querySelector("form");
+const myForm = document.querySelector("form");
+const wish = document.querySelector("#text1");
+const divMessage = document.querySelector("#message");
 
-const onSubmit = (e) => {
+
+myForm.addEventListener("submit",(e) => {
     console.log("onSubmit::");
     e.preventDefault();
-  };
-  
-  myForm.addEventListener("submit", onSubmit);
+    myForm.style.display = "none";
+    divMessage.textContent = `Your wish is : ${wish.value}`;
+});
 
 
   
