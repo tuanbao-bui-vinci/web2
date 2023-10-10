@@ -6,7 +6,6 @@ let cpt = 0;
 
 window.addEventListener("click", () => {
       cpt++;
-      
       buttons.innerText = "Hello world!";
       count.innerText = "Vous avez cliqué: "+ cpt;
       if(cpt >=5){
